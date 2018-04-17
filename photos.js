@@ -29,7 +29,7 @@ export default class Photos extends Component {
   }
 
   onDeletedPress = () => {
-    // ...
+    Actions.deleted()
   }
 
   getImages = () => {
@@ -60,13 +60,13 @@ export default class Photos extends Component {
 
   render = () => {
     const {imageIndex, isReady, images} = this.state
-    let { onFavoritesPress } = this
+    let { onFavoritesPress, onDeletedPress } = this
     if (isReady) {
       return (
         <View style={{width: width, height: height}}>
 
         <View style={{width: width, height: height * 0.20, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
-          <Button transparent style={{alignSelf: 'center'}}>
+          <Button onPress={() => onDeletedPress()} transparent style={{alignSelf: 'center'}}>
             <Image source={require('./assets/dislike.png')}/>
           </Button>
           <View>
