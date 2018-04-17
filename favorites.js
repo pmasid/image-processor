@@ -16,18 +16,37 @@ export default class Favorites extends Component {
         <View style={{width: width, height: height * 0.75, backgroundColor: 'lightgray', marginBottom: 24}}>
 
           <View style={{flexDirection: 'row'}}>
-            <Button transparent style={{width: 100, height: 100, margin: 8}}>
-              <Image source={{uri: PLACEHOLDER }} style={{width: 100, height: 100, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
+            <Button transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
+              <Image source={{uri: PLACEHOLDER }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
               <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
             </Button>
-            <Button transparent style={{width: 100, height: 100, margin: 8}}>
-              <Image source={{uri: PLACEHOLDER }} style={{width: 100, height: 100, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
+            <Button transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
+              <Image source={{uri: PLACEHOLDER }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
               <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
             </Button>
-            <Button transparent style={{width: 100, height: 100, margin: 8}}>
-              <Image source={{uri: PLACEHOLDER }} style={{width: 100, height: 100, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
+            <Button transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
+              <Image source={{uri: PLACEHOLDER }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
               <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
             </Button>
+          </View>
+
+          <View style={{flexDirection: 'row'}}>
+            <Button transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
+              <Image source={{uri: PLACEHOLDER }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
+              <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
+            </Button>
+            <Button transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
+              <Image source={{uri: PLACEHOLDER }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
+              <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
+            </Button>
+          </View>
+
+          <View style={{flexDirection: 'row'}}>
+            <Button transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
+              <Image source={{uri: PLACEHOLDER }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
+              <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
+            </Button>
+            
           </View>
 
         </View>
