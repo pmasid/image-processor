@@ -2,6 +2,7 @@ import Expo from 'expo'
 import React, {Component} from 'react'
 import {View, CameraRoll, Text, Image} from 'react-native'
 import Card from './card'
+import Favorites from './favorites'
 
 export default class App extends Component {
 
@@ -41,35 +42,39 @@ export default class App extends Component {
     this.setState({imageIndex: this.state.imageIndex + 1})
   }
 
-  render() {
-    const {imageIndex, isReady, images} = this.state
-    if (isReady) {
-      return (
-        <View style={{flex:1}}>
-        <Image 
-            source={require('./assets/like.png')}
-            style= {{alignSelf: 'flex-end',marginTop: 30,marginRight:15,}}
-          />
-        <Image 
-            source={require('./assets/dislike.png')}
-            style= {{marginTop:-20,marginLeft:15,}}
-          />
-          <Text style={{fontSize:20, textAlign:'center', marginTop: -30,}}>Unsorted Photos</Text>
-          <Text style={{fontSize:15, textAlign:'center', marginTop: 5,}}> 100 Remaining</Text>
-            {images.edges.slice(imageIndex, imageIndex + 3).reverse().map((image) => {
-              return (
-                <Card
-                  key={image.node.image.uri}
-                  image={image}
-                  onSwipeOff={this.nextCard}
-                />
-              )
-            })}
-        </View>
-      )
-    } else {
-      return null
-    }
+  render = () => {
+    return <Favorites/>
   }
-}
 
+  //
+  // render() {
+  //   const {imageIndex, isReady, images} = this.state
+  //   if (isReady) {
+  //     return (
+  //       <View style={{flex:1}}>
+  //       <Image
+  //           source={require('./assets/like.png')}
+  //           style= {{alignSelf: 'flex-end',marginTop: 30,marginRight:15,}}
+  //         />
+  //       <Image
+  //           source={require('./assets/dislike.png')}
+  //           style= {{marginTop:-20,marginLeft:15,}}
+  //         />
+  //         <Text style={{fontSize:20, textAlign:'center', marginTop: -30,}}>Unsorted Photos</Text>
+  //         <Text style={{fontSize:15, textAlign:'center', marginTop: 5,}}> 100 Remaining</Text>
+  //           {images.edges.slice(imageIndex, imageIndex + 3).reverse().map((image) => {
+  //             return (
+  //               <Card
+  //                 key={image.node.image.uri}
+  //                 image={image}
+  //                 onSwipeOff={this.nextCard}
+  //               />
+  //             )
+  //           })}
+  //       </View>
+  //     )
+  //   } else {
+  //     return null
+  //   }
+  // }
+}
