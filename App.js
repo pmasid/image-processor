@@ -11,14 +11,16 @@ export default class App extends Component {
     <Router>
       <Scene key="root">
         <Scene
-          initial
+
           key="photos"
           component={Photos}
           hideNavBar
         />
         <Scene
+          initial
           key="favorites"
           component={Favorites}
+          title="Add photos to favorites"
         />
       </Scene>
     </Router>
