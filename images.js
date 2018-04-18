@@ -24,11 +24,11 @@ export default class Images extends Component {
   }
 
   onFavoritesPress = () => {
-    Actions.favorites({favoriteImages: this.state.images.edges})
+    Actions.favorites({favoriteImages: this.state.favoritedImages})
   }
 
   onDeletedPress = () => {
-    Actions.deleted()
+    Actions.deleted({deletedImages: this.state.deletedImages})
   }
 
   getImages = () => {

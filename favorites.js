@@ -28,7 +28,6 @@ export default class Favorites extends Component {
 
   render = () => {
     let { favoriteImages, isReady } = this.state
-    let { renderImageThumbnail } = this
     if (isReady) {
       return(
         <View style={styles.container}>
