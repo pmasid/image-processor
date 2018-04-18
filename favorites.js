@@ -46,7 +46,6 @@ export default class Favorites extends Component {
               <Image source={{uri: PLACEHOLDER }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
               <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
             </Button>
-            
           </View>
 
         </View>
