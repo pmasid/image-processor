@@ -8,16 +8,15 @@ import { Actions } from 'react-native-router-flux'
 const {width, height} = Dimensions.get('window')
 
 // NOTE: Native-base is component library backup by Facebook React team that make easier to built components.
-// NOTE: Refactor flex properties to work on android
-// NOTE: Usign dimensions because cross-plataform issues with android
-// NOTE: Refactor header on photos to be responsive and able to be responsive on android too
 
-export default class Photos extends Component {
+export default class Images extends Component {
 
   state = {
     imageIndex: 0,
     images: [],
     isReady: false,
+    favoritedImages: [],
+    deletedImages: []
   }
 
   componentWillMount = () => {
@@ -25,7 +24,7 @@ export default class Photos extends Component {
   }
 
   onFavoritesPress = () => {
-    Actions.favorites()
+    Actions.favorites({favoriteImages: this.state.images.edges})
   }
 
   onDeletedPress = () => {
@@ -39,6 +38,14 @@ export default class Photos extends Component {
     }).then(images => {
       this.setState({ images: images}, () => this.setState({isReady: true}));
     })
+  }
+
+  onSwipeRight = (image) => {
+    this.setState({ favoritedImages: [...this.state.favoritedImages, image] })
+  }
+
+  onSwipeLeft = (image) => {
+    this.setState({ deletedImages: [...this.state.deletedImages, image] })
   }
 
   renderPhotos = () => {
@@ -81,6 +88,8 @@ export default class Photos extends Component {
             {images.edges.slice(imageIndex, imageIndex + 3).reverse().map((image) => {
               return (
                 <Card
+                  onSwipeRight={this.onSwipeRight}
+                  onSwipeLeft={this.onSwipeLeft}
                   key={image.node.image.uri}
                   image={image}
                   onSwipeOff={this.nextCard}

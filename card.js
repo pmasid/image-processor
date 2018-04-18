@@ -28,6 +28,11 @@ export default class Card extends Component {
         const direction = absDx / dx
 
         if (absDx > 120) {
+          if (direction === 1) {
+            this.props.onSwipeRight(this.props.image)
+          } else if (direction === -1) {
+            this.props.onSwipeLeft(this.props.image)
+          }
           Animated.decay(this.pan, {
             velocity: {x:3 * direction, y:0},
             deceleration: 0.995,

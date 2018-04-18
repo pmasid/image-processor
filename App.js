@@ -1,7 +1,7 @@
 import Expo from 'expo'
 import React, {Component} from 'react'
 import {View, CameraRoll, Text, Image} from 'react-native'
-import Photos from './photos'
+import Images from './images'
 import Favorites from './favorites'
 import Deleted from './deleted'
 import { Router, Scene } from 'react-native-router-flux'
@@ -13,8 +13,8 @@ export default class App extends Component {
       <Scene key="root">
         <Scene
           initial
-          key="photos"
-          component={Photos}
+          key="images"
+          component={Images}
           hideNavBar
         />
         <Scene
