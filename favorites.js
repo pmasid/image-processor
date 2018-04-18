@@ -11,11 +11,30 @@ export default class Favorites extends Component {
   state = {
     favoritedImages: [],
     isReady: false,
+    flattenImages: [],
   }
 
   componentWillMount = () => {
     let splitedImages = this.splitImagesIntoSubArray(this.props.favoritedImages, 3)
     this.setState({favoritedImages: splitedImages}, () => this.setState({isReady: true}))
+  }
+
+  onRemovePress = () => {
+
+    // ...
+  }
+
+  onInsertPress = () => {
+    // ...
+  }
+
+  isSelected = (target) => {
+    let result = this.state.favoritedImages.map(gridOfImages => {
+      let result = gridOfImages.filter(image => image.node.image.uri === target.node.image.uri)
+      return result.length >= 1 ? true : false
+    }
+    )
+    return result[0]
   }
 
   splitImagesIntoSubArray = (arr, count) => {
@@ -37,7 +56,7 @@ export default class Favorites extends Component {
                 {gridOfImages.map(image =>
                   <Button key={image.node.image.uri} transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
                     <Image source={{uri: image.node.image.uri }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
-                    <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
+                    {this.isSelected(image) ? <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/> : null}
                   </Button>
                 )}
               </View>
