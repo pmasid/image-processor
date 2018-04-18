@@ -10,12 +10,27 @@ const PLACEHOLDER = "https://www.westland.net/venice/images/birdseye.jpg"
 export default class Deleted extends Component {
   state = {
     deletedImages: [],
+    unselectedImages: [],
     isReady: false,
   }
 
   componentWillMount = () => {
     let splitedImages = this.splitImagesIntoSubArray(this.props.deletedImages, 3)
     this.setState({deletedImages: splitedImages}, () => this.setState({isReady: true}))
+  }
+
+  onRemovePress = (target) => {
+    this.setState({unselectedImages: [...this.state.unselectedImages, target]})
+  }
+
+  onInsertPress = (target) => {
+    let result = this.state.unselectedImages.filter(image => image.node.image.uri !== target.node.image.uri)
+    this.setState({unselectedImages: result})
+  }
+
+  isSelected = (target) => {
+    let result = this.state.unselectedImages.filter(image => image.node.image.uri === target.node.image.uri)
+    return result.length >= 1 ? false : true
   }
 
   splitImagesIntoSubArray = (arr, count) => {
@@ -35,9 +50,9 @@ export default class Deleted extends Component {
             {deletedImages.map(gridOfImages =>
               <View key={gridOfImages.length} style={{flexDirection: 'row'}}>
                 {gridOfImages.map(image =>
-                  <Button key={image.node.image.uri} transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
+                  <Button onPress={() => this.isSelected(image) ? this.onRemovePress(image) : this.onInsertPress(image)} key={image.node.image.uri} transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>
                     <Image source={{uri: image.node.image.uri }} style={{width: '100%', height: 108, borderWidth: 2, borderColor: 'grey', borderRadius: 2}}/>
-                    <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/>
+                    {this.isSelected(image) ? <Icon name="ios-checkmark-circle" style={{ position: 'absolute', left: '25%'}}/> : null}
                   </Button>
                 )}
               </View>
