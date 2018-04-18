@@ -4,7 +4,8 @@ import {View, CameraRoll, Text, Image} from 'react-native'
 import Images from './images'
 import Favorites from './favorites'
 import Deleted from './deleted'
-import { Router, Scene } from 'react-native-router-flux'
+import { Router, Scene, Actions } from 'react-native-router-flux'
+import { Icon } from 'native-base'
 
 export default class App extends Component {
 

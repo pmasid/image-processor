@@ -9,13 +9,13 @@ const PLACEHOLDER = "https://www.westland.net/venice/images/birdseye.jpg"
 export default class Favorites extends Component {
 
   state = {
-    favoriteImages: [],
+    favoritedImages: [],
     isReady: false,
   }
 
   componentWillMount = () => {
-    let splitedImages = this.splitImagesIntoSubArray(this.props.favoriteImages, 3)
-    this.setState({favoriteImages: splitedImages}, () => this.setState({isReady: true}))
+    let splitedImages = this.splitImagesIntoSubArray(this.props.favoritedImages, 3)
+    this.setState({favoritedImages: splitedImages}, () => this.setState({isReady: true}))
   }
 
   splitImagesIntoSubArray = (arr, count) => {
@@ -27,12 +27,12 @@ export default class Favorites extends Component {
   }
 
   render = () => {
-    let { favoriteImages, isReady } = this.state
+    let { favoritedImages, isReady } = this.state
     if (isReady) {
       return(
         <View style={styles.container}>
           <ScrollView style={styles.gridContainer}>
-            {favoriteImages.map(gridOfImages =>
+            {favoritedImages.map(gridOfImages =>
               <View key={gridOfImages.length} style={{flexDirection: 'row'}}>
                 {gridOfImages.map(image =>
                   <Button key={image.node.image.uri} transparent style={{width: '30%', height: 108, margin: 8, marginRight: 4}}>

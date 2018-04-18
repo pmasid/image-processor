@@ -19,16 +19,18 @@ export default class Images extends Component {
     deletedImages: []
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     this.getImages()
   }
 
   onFavoritesPress = () => {
-    Actions.favorites({favoriteImages: this.state.favoritedImages})
+    let images = [...this.state.favoritedImages]
+    Actions.favorites({favoritedImages: images})
   }
 
   onDeletedPress = () => {
-    Actions.deleted({deletedImages: this.state.deletedImages})
+    let images = [...this.state.deletedImages]
+    Actions.deleted({deletedImages: images})
   }
 
   getImages = () => {
@@ -66,12 +68,11 @@ export default class Images extends Component {
   }
 
   render = () => {
-    const {imageIndex, isReady, images} = this.state
+    const {imageIndex, isReady, images, favoritedImages} = this.state
     let { onFavoritesPress, onDeletedPress } = this
     if (isReady) {
       return (
         <View style={{width: width, height: height}}>
-
         <View style={{width: width, height: height * 0.20, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
           <Button onPress={() => onDeletedPress()} transparent style={{alignSelf: 'center'}}>
             <Image source={require('./assets/dislike.png')}/>
