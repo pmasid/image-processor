@@ -2,7 +2,7 @@ import Expo from 'expo'
 import React, {Component} from 'react'
 import {View, CameraRoll, Text, Image, Dimensions} from 'react-native'
 import Card from './card'
-import {Button} from 'native-base'
+import {Button, Icon} from 'native-base'
 import { Actions } from 'react-native-router-flux'
 
 const {width, height} = Dimensions.get('window')
@@ -79,14 +79,17 @@ export default class Images extends Component {
         <View style={{width: width, height: height}}>
         <View style={{width: width, height: height * 0.20, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
           <Button onPress={() => onDeletedPress()} transparent style={{alignSelf: 'center'}}>
-            <Image source={require('./assets/dislike.png')}/>
+            <Icon name="ios-heart" style={{fontSize: 32}}/>
           </Button>
           <View>
             <Text style={{fontSize:20, textAlign:'center'}}>Unsorted Photos</Text>
             <Text style={{fontSize:15, textAlign:'center'}}> {this.remainingCount()} Remaining</Text>
           </View>
           <Button onPress={() => onFavoritesPress()} transparent style={{alignSelf: 'center'}}>
-            <Image source={require('./assets/like.png')}/>
+            <Icon name="ios-heart" style={{fontSize: 32, color: 'red'}}/>
+            <View style={{width: 'auto', height: 20, borderRadius: 40, backgroundColor: 'red', position: 'absolute', left: '50%', top: '10%', alignItems: 'center'}}>
+              <Text style={{fontSize: 16, color: '#fff', fontWeight: 'bold', marginLeft: 8, marginRight: 8}}>{this.state.favoritedImages.length}</Text>
+            </View>
           </Button>
         </View>
 
