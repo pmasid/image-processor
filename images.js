@@ -67,6 +67,10 @@ export default class Images extends Component {
     this.setState({imageIndex: this.state.imageIndex + 1})
   }
 
+  remainingCount = () => {
+    return this.state.images.edges.length - this.state.imageIndex
+  }
+
   render = () => {
     const {imageIndex, isReady, images, favoritedImages} = this.state
     let { onFavoritesPress, onDeletedPress } = this
@@ -79,7 +83,7 @@ export default class Images extends Component {
           </Button>
           <View>
             <Text style={{fontSize:20, textAlign:'center'}}>Unsorted Photos</Text>
-            <Text style={{fontSize:15, textAlign:'center'}}> 100 Remaining</Text>
+            <Text style={{fontSize:15, textAlign:'center'}}> {this.remainingCount()} Remaining</Text>
           </View>
           <Button onPress={() => onFavoritesPress()} transparent style={{alignSelf: 'center'}}>
             <Image source={require('./assets/like.png')}/>
