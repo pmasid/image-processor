@@ -79,14 +79,17 @@ export default class Images extends Component {
         <View style={{width: width, height: height}}>
         <View style={{width: width, height: height * 0.20, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
           <Button onPress={() => onDeletedPress()} transparent style={{alignSelf: 'center'}}>
-            <Icon name="ios-heart" style={{fontSize: 32}}/>
+            <Icon name="ios-trash-outline" style={{fontSize: 32, color: '#000'}}/>
+            <View style={{width: 'auto', height: 20, borderRadius: 40, backgroundColor: 'red', position: 'absolute', left: '50%', top: '10%', alignItems: 'center'}}>
+              <Text style={{fontSize: 16, color: '#fff', fontWeight: 'bold', marginLeft: 8, marginRight: 8}}>{this.state.deletedImages.length}</Text>
+            </View>
           </Button>
           <View>
             <Text style={{fontSize:20, textAlign:'center'}}>Unsorted Photos</Text>
             <Text style={{fontSize:15, textAlign:'center'}}> {this.remainingCount()} Remaining</Text>
           </View>
           <Button onPress={() => onFavoritesPress()} transparent style={{alignSelf: 'center'}}>
-            <Icon name="ios-heart" style={{fontSize: 32, color: 'red'}}/>
+            <Icon name="ios-heart" style={{fontSize: 28, color: '#000'}}/>
             <View style={{width: 'auto', height: 20, borderRadius: 40, backgroundColor: 'red', position: 'absolute', left: '50%', top: '10%', alignItems: 'center'}}>
               <Text style={{fontSize: 16, color: '#fff', fontWeight: 'bold', marginLeft: 8, marginRight: 8}}>{this.state.favoritedImages.length}</Text>
             </View>
